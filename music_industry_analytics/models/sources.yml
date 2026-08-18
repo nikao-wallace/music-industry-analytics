@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: music_raw
+    description: Synthetic music-industry source data for portfolio and educational use.
+    database: MUSIC_ANALYTICS
+    schema: RAW
+    tables:
+      - name: artists
+        description: One row per fictional label artist.
+      - name: tracks
+        description: One row per fictional track.
+      - name: stream_events
+        description: One row per synthetic listening event.
+      - name: engagement_events
+        description: One row per synthetic save, share, or playlist-add event.
+      - name: marketing_campaigns
+        description: One row per fictional artist marketing campaign.
