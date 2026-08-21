@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: stg_artists
+    description: Cleaned and standardized artist records from the raw source.
+    columns:
+      - name: artist_id
+        description: Unique identifier for the artist.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: artist_name
+        description: Name of the artist.
+        data_tests:
+          - not_null
+
+      - name: genre
+        description: Detailed source genre of the artist.
+        data_tests:
+          - not_null
+
+      - name: genre_group
+        description: Standardized broad genre classification.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - Pop
+                  - Rock
+                  - Hip-Hop
+                  - Electronic
+                  - R&B
+                  - Country
+                  - Folk
+                  - World
+                  - Other
+
+      - name: signed_date
+        description: Date the artist signed with the label.
+        data_tests:
+          - not_null
+
+      - name: artist_status
+        description: Current status of the artist.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - active
+                  - inactive
