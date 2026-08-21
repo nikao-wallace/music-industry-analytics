@@ -51,3 +51,43 @@ models:
                 values:
                   - active
                   - inactive
+
+
+
+  - name: stg_tracks
+    description: Cleaned and standardized track records from the raw source.
+    columns:
+      - name: track_id
+        description: Unique identifier for the track.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: artist_id
+        description: Unique identifier for the artist associated with the track.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_artists')
+                field: artist_id
+
+      - name: track_name
+        description: Name of the track.
+        data_tests:
+          - not_null
+
+      - name: duration_ms
+        description: Duration of the track in milliseconds.
+        data_tests:
+          - not_null
+          
+
+      - name: release_date
+        description: Release date of the track.
+        data_tests:
+          - not_null
+
+
+
+      
