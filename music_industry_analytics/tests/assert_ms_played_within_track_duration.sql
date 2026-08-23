@@ -1,3 +1,10 @@
+-- Warning rather than error because a small number of stream events
+-- exceed track duration by several seconds. These records represent a
+-- negligible portion of the dataset and do not materially affect the
+-- project's primary analyses. The test remains in place to monitor
+-- the anomaly without blocking the pipeline.
+
+
 {{ config(severity='warn') }}
 
 select
