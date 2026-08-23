@@ -88,6 +88,55 @@ models:
         data_tests:
           - not_null
 
+  - name: stg_stream_events
+    description: Cleaned and standardized streaming event records from the raw source.
+    columns:
+      - name: stream_id
+        description: Unique identifier for the streaming event.
+        data_tests:
+          - not_null
+          - unique
 
+      - name: track_id
+        description: Unique identifier for the track associated with the streaming event.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_tracks')
+                field: track_id
 
-      
+      - name: listener_id
+        description: Identifier for the listener associated with the streaming event.
+        data_tests:
+          - not_null
+
+      - name: stream_timestamp
+        description: Timestamp of when the streaming event occurred.
+        data_tests:
+          - not_null
+
+      - name: ms_played
+        description: Duration of the stream in milliseconds.
+        data_tests:
+          - not_null
+
+      - name: streaming_platform
+        description: Platform on which the track was streamed.
+        data_tests:
+          - not_null
+
+      - name: device_type
+        description: Type of device used for streaming.
+        data_tests:
+          - not_null
+
+      - name: country
+        description: Country from which the streaming event originated.
+        data_tests:
+          - not_null
+
+      - name: stream_source
+        description: Source of the streaming event (e.g., playlist, radio, direct).
+        data_tests:
+          - not_null
