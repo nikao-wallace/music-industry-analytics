@@ -140,3 +140,44 @@ models:
         description: Source of the streaming event (e.g., playlist, radio, direct).
         data_tests:
           - not_null
+
+  - name: stg_engagement_events
+    description: Cleaned and standardized engagement event records from the raw source.
+    columns:
+      - name: engagement_id
+        description: Unique identifier for the engagement event.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: track_id
+        description: Unique identifier for the track associated with the engagement event.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_tracks')
+                field: track_id
+
+      - name: listener_id
+        description: Identifier for the listener associated with the engagement event.
+        data_tests:
+          - not_null
+
+      - name: event_timestamp
+        description: Timestamp of when the engagement event occurred.
+        data_tests:
+          - not_null
+
+      - name: event_type
+        description: Type of engagement 
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - share 
+                  - playlist_add
+                  - save
+                  - unknown
+                
