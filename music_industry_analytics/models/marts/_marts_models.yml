@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: artists_monthly
+    description: "This model aggregates artist data on a monthly basis, providing insights into their performance and trends over time."
+    
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - artist_id
+              - month 
+    
