@@ -10,4 +10,28 @@ models:
             combination_of_columns:
               - artist_id
               - month 
-    
+  
+  - name: artist_investment_recommendations
+    description: "This model provides investment recommendations for artists based on their performance metrics and market trends."
+    columns:
+      - name: artist_id
+        description: Unique identifier for the artist.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: artist_name
+        description: Name of the artist.
+        data_tests:
+          - not_null
+      
+      - name: recommendation
+        description: Investment recommendation for the artist (e.g., 'Invest', 'Hold', 'Divest').
+        data_tests:
+         - accepted_values:
+              arguments:
+                values:
+                  - Increase Investment
+                  - Maintain / Monitor
+                  - Reduce / Reassess
+          
